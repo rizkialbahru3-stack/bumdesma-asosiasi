@@ -4,6 +4,7 @@
         "api/index.php": { "runtime": "vercel-php@0.7.4" }
     },
     "routes": [
+        { "src": "/build/(.*)", "dest": "/build/$1" },
         { "src": "/video.mp4", "dest": "/video.mp4" },
         { "src": "/logo-bumdesma.png", "dest": "/logo-bumdesma.png" },
         { "src": "/logo-kabupaten.png", "dest": "/logo-kabupaten.png" },
