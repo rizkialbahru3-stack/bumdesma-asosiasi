@@ -1,4 +1,6 @@
 {
+    "version": 2,
+    "framework": null,
     "outputDirectory": "public",
     "functions": {
         "api/*.php": { "runtime": "vercel-php@0.7.4" }
@@ -16,8 +18,8 @@
         "APP_ENV": "production",
         "APP_DEBUG": "false",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
+        "SESSION_DRIVER": "array",
         "CACHE_DRIVER": "array",
-        "VIEW_COMPILED_PATH": "/tmp/views"
+        "VIEW_COMPILED_PATH": "/tmp"
     }
 }
