@@ -1,0 +1,21 @@
+{
+    "functions": {
+        "api/index.php": { "runtime": "vercel-php@0.7.4" }
+    },
+    "routes": [
+        { "src": "/video.mp4", "dest": "/video.mp4" },
+        { "src": "/logo-bumdesma.png", "dest": "/logo-bumdesma.png" },
+        { "src": "/logo-kabupaten.png", "dest": "/logo-kabupaten.png" },
+        { "src": "/favicon.ico", "dest": "/favicon.ico" },
+        { "src": "/robots.txt", "dest": "/robots.txt" },
+        { "src": "/(.*)", "dest": "/api/index.php" }
+    ],
+    "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "CACHE_DRIVER": "array",
+        "VIEW_COMPILED_PATH": "/tmp/views"
+    }
+}
