@@ -4,13 +4,15 @@ header('Content-Type: text/plain');
 
 $base = dirname(__DIR__);
 
-$checks = [
-    'vendor/autoload.php' => file_exists($base . '/vendor/autoload.php'),
-    'bootstrap/app.php' => file_exists($base . '/bootstrap/app.php'),
-    'public/video.mp4' => file_exists($base . '/public/video.mp4'),
-    'APP_KEY env' => (bool) getenv('APP_KEY'),
-];
-
-foreach ($checks as $k => $v) {
-    echo $k . ': ' . ($v ? 'YES' : 'NO') . "\n";
+try {
+    require $base . '/vendor/autoload.php';
+    $app = require $base . '/bootstrap/app.php';
+    $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+    $request = Illuminate\Http\Request::create('/', 'GET');
+    $response = $kernel->handle($request);
+    echo 'LARAVEL STATUS: ' . $response->getStatusCode() . "\n";
+    $kernel->terminate($request, $response);
+} catch (Throwable $e) {
+    echo get_class($e) . ': ' . $e->getMessage() . "\n";
+    echo $e->getFile() . ':' . $e->getLine() . "\n";
 }
